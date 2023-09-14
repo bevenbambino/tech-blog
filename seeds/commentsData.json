@@ -1,0 +1,17 @@
+[
+    {
+      "content": "When you're out of control, try double clicking on the controller folder",
+      "user_id": 3,
+      "post_id": 1
+    },
+    {
+      "content": "I can be my authentic self with this",
+      "user_id" : 1,
+      "post_id": 2
+    },
+    {
+      "content": "That's so OOP! Or overly over powered!",
+      "user_id" : 2,
+      "post_id": 3
+    }
+  ]
