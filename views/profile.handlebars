@@ -1,0 +1,115 @@
+<main class="container container-fluid mt-5">
+
+  <div class="row">
+    <div class="col-12 text-center mx-auto">
+      <h2>Welcome, {{name}}!</h2>
+    </div>
+  </div>
+
+  <button
+    class="btn btn-primary btn-block w-75 mt-4 mx-auto"
+    id="new-post-btn"
+  >Add Post</button>
+
+  <div class="row mt-4">
+    <div class="col-md-6 make-posts-el" id="make-posts-el">
+      <h3>Create a New post:</h3>
+
+      <form class="form new-post-form">
+        <div class="form-group">
+          <label for="post-name">post name:</label>
+          <input
+            class="form-input"
+            type="text"
+            id="post-name"
+            name="post-name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="post-desc">description:</label>
+          <textarea
+            class="form-input"
+            id="post-desc"
+            name="post-desc"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" >Create</button>
+        </div>
+      </form>
+    </div>
+
+    {{#if posts.length}}
+      <div class="col-md-6 post-list">
+        <h3>Current posts:</h3>
+
+        {{#each posts as |post|}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <h4><a
+                  href="/post/{{post.id}}"
+                  class="no-button"
+                >{{post.title}}</a></h4>
+            </div>
+
+            <div class="col-md-4">
+              <button
+                class="btn btn-sm btn-primary edit-btn"
+                data-edit="{{post.id}}"
+              >EDIT</button>
+              
+              <button
+                class="btn btn-sm btn-danger"
+                data-delete="{{post.id}}"
+                id="delete-btn"
+              >DELETE</button>
+            </div>
+            
+          </div>
+
+          <form class="form edit-post-form" data-form="{{post.id}}">
+            <h3>Edit Post: </h3>
+            <div class="form-group">
+              <label for="post-name">post name:</label>
+              <input
+                class="form-input"
+                type="text"
+                id="edit-post-name-{{post.id}}"
+                name="post-name"
+                value="{{post.title}}"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="post-desc">description:</label>
+              <input
+                class="form-input"
+                id="edit-post-desc-{{post.id}}"
+                name="post-desc"
+                value="{{post.content}}"
+              ></input>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-3 ">
+                <button type="submit" data-editid="{{post.id}}" class="btn btn-primary save-edit-btn">Save</button>
+              </div>
+              <div class="form-group col-3 ">
+                <button type="submit" data-id="{{post.id}}" class="btn btn-primary id
+                cancel-btn">Cancel</button>
+              </div>
+            </div>
+
+          </form>
+        {{/each}}
+      </div>
+    {{/if}}
+
+
+  </div>
+
+</main>
+
+<script src="./js/profile.js"></script>
